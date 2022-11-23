@@ -74,7 +74,15 @@ class _AuthState extends State<Auth> {
                 height: 15,
               ),
               ElevatedButton(
-                onPressed: myController.text.isEmpty ? null : () {},
+                onPressed: myController.text.isEmpty
+                    ? null
+                    : () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Auth(),
+                            ));
+                      },
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     textStyle: const TextStyle(

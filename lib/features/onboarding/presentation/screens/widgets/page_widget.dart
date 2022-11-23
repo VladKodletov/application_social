@@ -1,4 +1,5 @@
 import 'package:application_social/features/auth/presentation/auth.dart';
+import 'package:application_social/features/home/presentation/homepage.dart';
 import 'package:application_social/features/onboarding/presentation/screens/onboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -103,7 +104,7 @@ class OnBoardWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Auth(),
+                            builder: (context) => const HomePage(),
                           ));
                     }
                   },
