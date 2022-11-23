@@ -1,12 +1,12 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:application_social/features/auth/presentation/auth.dart';
+import 'package:application_social/features/onboarding/presentation/screens/onboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:application_social/features/onboarding/presentation/screens/widgets/page_number.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class OnBoardWidget extends StatelessWidget {
   final String onboardingImage;
   final int isActive;
@@ -70,39 +70,47 @@ class OnBoardWidget extends StatelessWidget {
                       number: 1,
                       backgroundColor: isActive == 1
                           ? Colors.white
-                          : Color.fromRGBO(64, 64, 64, 1),
+                          : const Color.fromRGBO(64, 64, 64, 1),
                     ),
                     PageNumber(
                         colorText: isActive == 2 ? Colors.black : Colors.white,
                         number: 2,
                         backgroundColor: isActive == 2
                             ? Colors.white
-                            : Color.fromRGBO(64, 64, 64, 1)),
+                            : const Color.fromRGBO(64, 64, 64, 1)),
                     PageNumber(
                         colorText: isActive == 3 ? Colors.black : Colors.white,
                         number: 3,
                         backgroundColor: isActive == 3
                             ? Colors.white
-                            : Color.fromRGBO(64, 64, 64, 1)),
+                            : const Color.fromRGBO(64, 64, 64, 1)),
                   ],
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 ElevatedButton(
-                  onPressed: isActive == 3
-                      ? () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Auth(),
-                              ));
-                        }
-                      : () {},
+                  onPressed: () {
+                    if (isActive == 1) {
+                      controller.animateToPage(1,
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.easeInOut);
+                    } else if (isActive == 2) {
+                      controller.animateToPage(2,
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.easeInOut);
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Auth(),
+                          ));
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      textStyle:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      textStyle: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.w500),
                       minimumSize: const Size(double.infinity, 60)),
                   child: const Text(
                     'Next',

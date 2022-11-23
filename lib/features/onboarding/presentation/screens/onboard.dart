@@ -1,6 +1,11 @@
 import 'package:application_social/features/onboarding/presentation/screens/widgets/page_widget.dart';
 import 'package:flutter/material.dart';
 
+final controller = PageController(
+  initialPage: 0,
+  keepPage: true,
+);
+
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({super.key});
 
@@ -9,11 +14,6 @@ class OnBoardScreen extends StatefulWidget {
 }
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
-  final controller = PageController(
-    initialPage: 0,
-    keepPage: true,
-  );
-
   @override
   Widget build(BuildContext context) {
     return PageView(
