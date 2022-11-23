@@ -17,14 +17,15 @@ class PageNumber extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
+          radius: 14,
           backgroundColor: backgroundColor,
           child: Text(
             '$number',
-            style: TextStyle(color: colorText),
+            style: TextStyle(color: colorText, fontSize: 12),
           ),
         ),
         const SizedBox(
-          width: 10,
+          width: 15,
         ),
       ],
     );
