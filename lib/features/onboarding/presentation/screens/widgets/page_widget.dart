@@ -1,15 +1,17 @@
-import 'package:application_social/features/onboarding/presentation/screens/widgets/page_number.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class OnBoardWidget extends StatelessWidget {
-  final String onboardingLogo;
+import 'package:application_social/features/onboarding/presentation/screens/widgets/page_number.dart';
 
+class OnBoardWidget extends StatelessWidget {
   final String onboardingImage;
+  final int isActive;
+
   const OnBoardWidget({
     Key? key,
-    required this.onboardingLogo,
     required this.onboardingImage,
+    required this.isActive,
   }) : super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class OnBoardWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 24, top: 60),
             child: SvgPicture.asset(
-              'assets/images/$onboardingLogo',
+              'assets/images/010.svg',
             ),
           ),
           Padding(
@@ -45,19 +47,23 @@ class OnBoardWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   // mainAxisSize: MainAxisSize.min,
-                  children: const [
+                  children: [
                     PageNumber(
-                        colorText: Colors.black,
-                        number: 0,
-                        backgroundColor: Colors.white),
+                      colorText: isActive == 1 ? Colors.black : Colors.white,
+                      number: 1,
+                      backgroundColor:
+                          isActive == 1 ? Colors.white : Colors.black,
+                    ),
                     PageNumber(
-                        colorText: Colors.white,
+                        colorText: isActive == 2 ? Colors.black : Colors.white,
                         number: 2,
-                        backgroundColor: Colors.black),
+                        backgroundColor:
+                            isActive == 2 ? Colors.white : Colors.black),
                     PageNumber(
-                        colorText: Colors.white,
+                        colorText: isActive == 3 ? Colors.black : Colors.white,
                         number: 3,
-                        backgroundColor: Colors.black),
+                        backgroundColor:
+                            isActive == 3 ? Colors.white : Colors.black),
                   ],
                 ),
                 const SizedBox(

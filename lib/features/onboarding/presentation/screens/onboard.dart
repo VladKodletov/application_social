@@ -13,9 +13,9 @@ class OnBoardScreen extends StatelessWidget {
     return PageView(
       controller: controller,
       children: const [
-        OnBoardWidget(onboardingImage: "210.svg", onboardingLogo: "010.svg"),
-        OnBoardWidget(onboardingImage: "39.svg", onboardingLogo: "010.svg"),
-        OnBoardWidget(onboardingImage: "125.svg", onboardingLogo: "010.svg"),
+        OnBoardWidget(onboardingImage: "210.svg", isActive: 1),
+        OnBoardWidget(onboardingImage: "39.svg", isActive: 2),
+        OnBoardWidget(onboardingImage: "125.svg", isActive: 3),
       ],
     );
   }
