@@ -53,20 +53,20 @@ class _AuthState extends State<Auth> {
               const SizedBox(
                 height: 40,
               ),
-              SizedBox(
-                height: 60,
-                child: TextField(
-                  controller: myController,
-                  decoration: const InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                    filled: true,
-                    fillColor: Color.fromRGBO(240, 240, 240, 1),
-                    labelText: 'Enter nickname',
-                    labelStyle: TextStyle(fontSize: 38),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
-                  ),
+              TextField(
+                controller: myController,
+                decoration: const InputDecoration(
+                  isDense: true,
+                  contentPadding: EdgeInsets.all(25),
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  filled: true,
+                  fillColor: Color.fromRGBO(240, 240, 240, 1),
+                  labelText: 'Nickname',
+                  hintText: 'Enter nickname',
+                  hintStyle: TextStyle(fontSize: 38),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(12))),
                 ),
               ),
               const SizedBox(height: 200),

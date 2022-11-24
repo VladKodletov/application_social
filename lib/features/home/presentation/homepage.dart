@@ -12,10 +12,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int indexNavigation = 0;
   final pages = [
-    Auth(),
-    Auth(),
-    OnBoardScreen(),
-    OnBoardScreen(),
+    const Auth(),
+    const Auth(),
+    const OnBoardScreen(),
+    const OnBoardScreen(),
   ];
 
   @override
