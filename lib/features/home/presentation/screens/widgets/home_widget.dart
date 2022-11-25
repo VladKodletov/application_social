@@ -6,6 +6,10 @@ import 'package:application_social/features/home/presentation/screens/widgets/ca
 import 'package:flutter/material.dart';
 
 String nameLogin = 'GantMan';
+const TextStyle mainWord =
+    const TextStyle(fontSize: 30, fontWeight: FontWeight.w700);
+const TextStyle greyWord = const TextStyle(color: Colors.black38, fontSize: 12);
+const Color colorWordGrey = Colors.black38;
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
@@ -76,34 +80,45 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return login == false
-        ? Center(
+        ? const Center(
             child: CircularProgressIndicator(),
           )
         : Padding(
-            padding: const EdgeInsets.only(top: 50.0, left: 12),
+            padding: const EdgeInsets.only(top: 60.0, left: 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(_user.login),
+                    Text(_user.login, style: mainWord),
                     ElevatedButton(
                       onPressed: () {},
-                      child: const Text('+ Follow on github'),
+                      child: const Text(
+                        '+  ' '  Follow on github',
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
                     )
                   ],
                 ),
                 Text(
                   'Company - ${_user.company}',
+                  style: TextStyle(color: colorWordGrey, fontSize: 16),
                 ),
-                Text('Email - ${_user.email}'),
-                Text('Bio - ${_user.bio}'),
+                Text(
+                  'Email - ${_user.email}',
+                  style: TextStyle(color: colorWordGrey, fontSize: 16),
+                ),
+                Text(
+                  'Bio - ${_user.bio}',
+                  style: TextStyle(color: colorWordGrey, fontSize: 16),
+                  maxLines: 1,
+                ),
                 const Divider(thickness: 2),
                 const CategoryName(category: 'Following you'),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.2,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: _following.length,
@@ -119,7 +134,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   NetworkImage(_following[index].avatarUrl),
                             ),
                             Text(_following[index].login),
-                            Text(_following[index].id.toString()),
+                            Text(
+                              _following[index].id.toString(),
+                              style: greyWord,
+                            ),
                           ],
                         ),
                       );
@@ -130,7 +148,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                 const CategoryName(category: 'Repositories'),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.2,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: _repositories.length,
@@ -140,12 +158,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CircleAvatar(
+                            const CircleAvatar(
                               radius: 60,
                               backgroundColor: Colors.amber,
                             ),
-                            Text(_repositories[index].name),
-                            Text(_repositories[index].id.toString()),
+                            Text(
+                              _repositories[index].name,
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              _repositories[index].id.toString(),
+                              style: greyWord,
+                            ),
                           ],
                         ),
                       );

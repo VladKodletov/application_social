@@ -1,3 +1,4 @@
+import 'package:application_social/features/home/presentation/screens/widgets/home_widget.dart';
 import 'package:flutter/material.dart';
 
 class CategoryName extends StatelessWidget {
@@ -12,11 +13,12 @@ class CategoryName extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(category),
+        Text(category, style: mainWord,),
         TextButton(
             onPressed: () {},
             child: const Text('View all',
                 style: TextStyle(
+                  
                   decoration: TextDecoration.underline,
                 )))
       ],

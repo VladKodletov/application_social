@@ -13,7 +13,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Poppins',
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.grey,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            textStyle: MaterialStateProperty.all<TextStyle>(
+                const TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+            backgroundColor: MaterialStateProperty.all<Color>(
+              Colors.amber.shade900,
+            ), //button color
+            foregroundColor: MaterialStateProperty.all<Color>(
+              Color(0xffffffff),
+            ), //text (and icon)
+          ),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const Scaffold(body: OnBoardScreen()),

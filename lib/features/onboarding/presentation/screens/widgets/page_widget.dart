@@ -110,8 +110,8 @@ class OnBoardWidget extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      textStyle: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w500),
+                      // textStyle: const TextStyle(
+                      //     fontSize: 18, fontWeight: FontWeight.w500),
                       minimumSize: const Size(double.infinity, 60)),
                   child: const Text(
                     'Next',

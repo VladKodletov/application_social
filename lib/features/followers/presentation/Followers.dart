@@ -76,6 +76,8 @@ class _FollowersScreenState extends State<FollowersScreen> {
                   child: TextField(
                     controller: myController,
                     decoration: const InputDecoration(
+                      suffixIcon: Icon(Icons.filter_alt_outlined),
+
                       isDense: true,
                       contentPadding: EdgeInsets.all(15),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
