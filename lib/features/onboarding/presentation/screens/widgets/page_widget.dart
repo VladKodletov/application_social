@@ -1,5 +1,4 @@
 import 'package:application_social/features/auth/presentation/auth.dart';
-import 'package:application_social/features/home/presentation/screens/homepage.dart';
 import 'package:application_social/features/onboarding/presentation/screens/onboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

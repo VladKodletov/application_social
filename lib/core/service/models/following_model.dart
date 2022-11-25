@@ -21,7 +21,7 @@ class Following {
 
   String toJson() => json.encode(toMap());
 
-  factory Following.fromMap(Map<dynamic, dynamic> json) => Following(
+  factory Following.fromMap(Map<String, dynamic> json) => Following(
         login: json["login"],
         id: json["id"],
         nodeId: json["node_id"],

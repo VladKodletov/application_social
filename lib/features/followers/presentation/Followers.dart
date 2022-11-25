@@ -1,10 +1,10 @@
+// ignore_for_file: file_names
+
+import 'package:flutter/material.dart';
+
 import 'package:application_social/core/service/api_service/api_service.dart';
 import 'package:application_social/core/service/models/followers_model.dart';
 import 'package:application_social/features/home/presentation/screens/widgets/home_widget.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class FollowersScreen extends StatefulWidget {
   const FollowersScreen({super.key});
@@ -25,7 +25,7 @@ class _FollowersScreenState extends State<FollowersScreen> {
     getFollowers();
   }
 
-  getFollowers() async {
+  Future getFollowers() async {
     List<Followers> followers = await APIService().getFollowerUser(nameLogin);
     setState(() {
       _followers = followers;
@@ -33,57 +33,76 @@ class _FollowersScreenState extends State<FollowersScreen> {
     });
   }
 
+  Future refresh() async {
+    List<Followers> followers = await APIService().getFollowerUser(nameLogin);
+    setState(() {
+      _followers = followers;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return login == false
-        ? Center(
+        ? const Center(
             child: CircularProgressIndicator(),
           )
         : Padding(
             padding: const EdgeInsets.only(
-              top: 100.0,
+              top: 60.0,
             ),
             child: Stack(
               alignment: AlignmentDirectional.topStart,
               children: [
                 Padding(
-                    padding: EdgeInsets.only(top: 50),
-                    child: ListView.builder(
-                      itemBuilder: (context, index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Divider(thickness: 2),
-                            ListTile(
-                              leading: CircleAvatar(
-                                radius: 30,
-                                backgroundImage:
-                                    NetworkImage(_followers[index].avatarUrl),
+                    padding: const EdgeInsets.only(top: 50),
+                    child: RefreshIndicator(
+                      onRefresh: refresh,
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Divider(thickness: 1.5),
+                              ListTile(
+                                leading: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage:
+                                      NetworkImage(_followers[index].avatarUrl),
+                                ),
+                                title: Text(
+                                  _followers[index].login,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20),
+                                ),
+                                subtitle: Text(_followers[index].id.toString(),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16)),
                               ),
-                              title: Text(_followers[index].login),
-                              subtitle: Text(_followers[index].id.toString()),
-                            ),
-                          ],
-                        );
-                      },
+                            ],
+                          );
+                        },
+                      ),
                     )),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: const Text('Followers'),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Text(
+                    'Followers',
+                    style: mainWord,
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 26, left: 12, right: 12),
+                  padding: const EdgeInsets.only(top: 40, left: 12, right: 12),
                   child: TextField(
                     controller: myController,
                     decoration: const InputDecoration(
                       suffixIcon: Icon(Icons.filter_alt_outlined),
-
                       isDense: true,
-                      contentPadding: EdgeInsets.all(15),
+                      contentPadding: EdgeInsets.all(10),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       filled: true,
                       fillColor: Color.fromRGBO(240, 240, 240, 1),
-                      // labelText: 'Nickname',
                       hintText: 'Search...',
                       hintStyle: TextStyle(fontSize: 20),
                       border: OutlineInputBorder(

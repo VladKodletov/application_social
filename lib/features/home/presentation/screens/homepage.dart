@@ -1,8 +1,6 @@
-import 'package:application_social/core/service/api_service/api_service.dart';
-import 'package:application_social/core/service/models/user_model.dart';
 import 'package:application_social/features/followers/presentation/Followers.dart';
 import 'package:application_social/features/home/presentation/screens/widgets/home_widget.dart';
-import 'package:application_social/features/onboarding/presentation/screens/onboard.dart';
+import 'package:application_social/features/profile/presentation/profile_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -18,8 +16,8 @@ class _HomePageState extends State<HomePage> {
   final pages = [
     const HomeWidget(),
     const FollowersScreen(),
-    const OnBoardScreen(),
-    const OnBoardScreen(),
+    const FollowersScreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -27,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: pages[indexNavigation],
       bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.black.withOpacity(0),
         selectedIndex: indexNavigation,
         onDestinationSelected: (value) => setState(() {
           indexNavigation = value;

@@ -5,10 +5,15 @@ import 'package:application_social/core/service/models/user_model.dart';
 import 'package:application_social/features/home/presentation/screens/widgets/category_name.dart';
 import 'package:flutter/material.dart';
 
+
+
 String nameLogin = 'GantMan';
-const TextStyle mainWord =
-    const TextStyle(fontSize: 30, fontWeight: FontWeight.w700);
-const TextStyle greyWord = const TextStyle(color: Colors.black38, fontSize: 12);
+
+
+
+
+const TextStyle mainWord = TextStyle(fontSize: 30, fontWeight: FontWeight.w700);
+const TextStyle greyWord = TextStyle(color: Colors.black38, fontSize: 12);
 const Color colorWordGrey = Colors.black38;
 
 class HomeWidget extends StatefulWidget {
@@ -86,6 +91,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         : Padding(
             padding: const EdgeInsets.only(top: 60.0, left: 12),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
@@ -103,21 +109,21 @@ class _HomeWidgetState extends State<HomeWidget> {
                 ),
                 Text(
                   'Company - ${_user.company}',
-                  style: TextStyle(color: colorWordGrey, fontSize: 16),
+                  style: const TextStyle(color: colorWordGrey, fontSize: 16),
                 ),
                 Text(
                   'Email - ${_user.email}',
-                  style: TextStyle(color: colorWordGrey, fontSize: 16),
+                  style: const TextStyle(color: colorWordGrey, fontSize: 16),
                 ),
                 Text(
                   'Bio - ${_user.bio}',
-                  style: TextStyle(color: colorWordGrey, fontSize: 16),
+                  style: const TextStyle(color: colorWordGrey, fontSize: 16),
                   maxLines: 1,
                 ),
                 const Divider(thickness: 2),
                 const CategoryName(category: 'Following you'),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  // width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.25,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -126,6 +132,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       return Padding(
                         padding: const EdgeInsets.only(right: 20.0),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CircleAvatar(
@@ -154,23 +161,30 @@ class _HomeWidgetState extends State<HomeWidget> {
                     itemCount: _repositories.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        padding: const EdgeInsets.only(right: 30.0),
+                        child: Row(
                           children: [
-                            const CircleAvatar(
-                              radius: 60,
-                              backgroundColor: Colors.amber,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  'assets/images/451.jpg',
+                                  height: 120,
+                                  fit: BoxFit.cover,
+                                ),
+                                Text(
+                                  _repositories[index].name,
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Text(
+                                  _repositories[index].id.toString(),
+                                  style: greyWord,
+                                ),
+                              ],
                             ),
-                            Text(
-                              _repositories[index].name,
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              _repositories[index].id.toString(),
-                              style: greyWord,
-                            ),
+                            Column()
                           ],
                         ),
                       );
