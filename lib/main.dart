@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        
+        fontFamily: 'Poppins',
         primarySwatch: Colors.orange,
       ),
       debugShowCheckedModeBanner: false,
-      home: const OnBoardScreen(),
+      home: const Scaffold(body: OnBoardScreen()),
     );
   }
 }

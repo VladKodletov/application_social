@@ -1,3 +1,4 @@
+import 'package:application_social/features/home/presentation/screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,6 +11,7 @@ class Auth extends StatefulWidget {
 
 class _AuthState extends State<Auth> {
   final myController = TextEditingController();
+
   @override
   void initState() {
     myController.addListener(_buttonState);
@@ -36,25 +38,25 @@ class _AuthState extends State<Auth> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text('Github social',
+              const Text('GitHub social',
                   softWrap: true,
-                  style: GoogleFonts.poppins(
-                    textStyle: (const TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.w700)),
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
                   )),
               Text('Enter nickname on github',
                   softWrap: true,
-                  style: GoogleFonts.poppins(
-                    textStyle: (TextStyle(
-                        color: Colors.grey[700],
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400)),
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
                   )),
               const SizedBox(
                 height: 40,
               ),
               TextField(
                 controller: myController,
+                style: const TextStyle(fontSize: 30),
                 decoration: const InputDecoration(
                   isDense: true,
                   contentPadding: EdgeInsets.all(25),
@@ -62,8 +64,9 @@ class _AuthState extends State<Auth> {
                   filled: true,
                   fillColor: Color.fromRGBO(240, 240, 240, 1),
                   labelText: 'Nickname',
+                  labelStyle: TextStyle(fontSize: 18, color: Colors.grey),
                   hintText: 'Enter nickname',
-                  hintStyle: TextStyle(fontSize: 38),
+                  hintStyle: TextStyle(fontSize: 18),
                   border: OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -80,7 +83,7 @@ class _AuthState extends State<Auth> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Auth(),
+                              builder: (context) => const HomePage(),
                             ));
                       },
                 style: ElevatedButton.styleFrom(
