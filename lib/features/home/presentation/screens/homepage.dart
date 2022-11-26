@@ -1,24 +1,51 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+
 import 'package:application_social/features/followers/presentation/Followers.dart';
 import 'package:application_social/features/home/presentation/screens/widgets/home_widget.dart';
 import 'package:application_social/features/profile/presentation/profile_screen.dart';
 
-import 'package:flutter/material.dart';
-
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String userName;
+  const HomePage({
+    Key? key,
+    required this.userName,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int indexNavigation = 0;
-  final pages = [
-    const HomeWidget(),
-    const FollowersScreen(),
-    const FollowersScreen(),
-    const ProfileScreen(),
-  ];
+  late int indexNavigation = 0;
+    late List pages = [
+      HomeWidget(nameLogin: widget.userName),
+      FollowersScreen(nameLogin: widget.userName),
+      FollowersScreen(nameLogin: widget.userName),
+      ProfileScreen(nameLogin: widget.userName),
+    ];
+
+
+  // final pages = [
+  //   Center(),
+  //   Center(),
+  //   Center(),
+  //   Center(),
+  // ];
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   int indexNavigation = 0;
+  //   final pages = [
+  //     HomeWidget(nameLogin: widget.userName),
+  //     FollowersScreen(nameLogin: widget.userName),
+  //     FollowersScreen(nameLogin: widget.userName),
+  //     ProfileScreen(nameLogin: widget.userName),
+  //   ];
+  // }
+
+
 
   @override
   Widget build(BuildContext context) {

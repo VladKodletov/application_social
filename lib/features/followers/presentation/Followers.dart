@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
@@ -7,7 +8,11 @@ import 'package:application_social/core/service/models/followers_model.dart';
 import 'package:application_social/features/home/presentation/screens/widgets/home_widget.dart';
 
 class FollowersScreen extends StatefulWidget {
-  const FollowersScreen({super.key});
+  final String nameLogin;
+  const FollowersScreen({
+    Key? key,
+    required this.nameLogin,
+  }) : super(key: key);
 
   @override
   State<FollowersScreen> createState() => _FollowersScreenState();
@@ -26,7 +31,7 @@ class _FollowersScreenState extends State<FollowersScreen> {
   }
 
   Future getFollowers() async {
-    List<Followers> followers = await APIService().getFollowerUser(nameLogin);
+    List<Followers> followers = await APIService().getFollowerUser(widget.nameLogin);
     setState(() {
       _followers = followers;
       login = true;
@@ -34,7 +39,7 @@ class _FollowersScreenState extends State<FollowersScreen> {
   }
 
   Future refresh() async {
-    List<Followers> followers = await APIService().getFollowerUser(nameLogin);
+    List<Followers> followers = await APIService().getFollowerUser(widget.nameLogin);
     setState(() {
       _followers = followers;
     });

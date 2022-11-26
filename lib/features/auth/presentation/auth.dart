@@ -1,8 +1,10 @@
+import 'package:application_social/core/service/models/user_model.dart';
 import 'package:application_social/features/home/presentation/screens/homepage.dart';
-import 'package:application_social/features/home/presentation/screens/widgets/home_widget.dart';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Auth extends StatefulWidget {
   const Auth({super.key});
@@ -13,13 +15,13 @@ class Auth extends StatefulWidget {
 
 class _AuthState extends State<Auth> {
   final myController = TextEditingController();
+
   bool showError = false;
   String nameLogin = '';
 
   @override
   void initState() {
     myController.addListener(_buttonState);
-    // myController.addListener(response);
     super.initState();
   }
 
@@ -29,25 +31,9 @@ class _AuthState extends State<Auth> {
     });
   }
 
-  response() async {
-    String nameLogin = myController.text;
-    Uri uri = Uri.parse('https://api.github.com/users/$nameLogin');
-    final response = await http.get(uri);
-    if (response.statusCode == 200) {
-      setState(() {
-        myController.text;
-        showError = false;
-      });
-    }
-    {
-      setState(() {
-        showError = true;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white.withOpacity(0),
@@ -94,30 +80,53 @@ class _AuthState extends State<Auth> {
                       borderRadius: BorderRadius.all(Radius.circular(12))),
                 ),
               ),
-              showError == false
+              if (!isKeyboard) showError == false
                   ? const SizedBox(
                       height: 350,
                     )
                   : SizedBox(
                       height: 350,
-                      child: Text(
-                        "Нет такого ника!",
-                        style: TextStyle(fontSize: 46),
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset('assets/images/icon1.svg',
+                                fit: BoxFit.contain),
+                            const Text(
+                              "User with this nickname not found!",
+                              style: TextStyle(fontSize: 30, color: Colors.red),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
               ElevatedButton(
                 onPressed: myController.text.isEmpty
                     ? null
-                    : () {
-                        response();
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                          // TODO first variant
-                          // builder: (context) => const HomePage(),
-                          // TODO second variant
-                        //       builder: (myController.text) => const HomePage(myController.text),
-                        //     ));
+                    : () async {
+                        try {
+                          nameLogin = myController.text;
+                          Uri uri = Uri.parse(
+                              'https://api.github.com/users/$nameLogin');
+                          final response = await http.get(uri);
+
+                          Map<String, dynamic> data = jsonDecode(response.body);
+                          User user = User.fromMap(data);
+
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    HomePage(userName: nameLogin),
+                              ));
+                        } catch (error) {
+                          setState(() {
+                            showError = true;
+                          });
+                        }
                       },
                 style: ElevatedButton.styleFrom(
                     disabledBackgroundColor: Colors.grey,

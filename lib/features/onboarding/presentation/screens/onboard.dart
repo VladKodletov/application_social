@@ -16,26 +16,29 @@ class OnBoardScreen extends StatefulWidget {
 class _OnBoardScreenState extends State<OnBoardScreen> {
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: controller,
-      children: [
-        OnBoardWidget(
-          onboardingImage: "210.svg",
-          isActive: 1,
-          text: 'Фонд поддержки стартапов "Спутник"',
-        ),
-        OnBoardWidget(
-            onboardingImage: "39.svg",
-            isActive: 2,
-            text:
-                'Мы помогаем сфокусироваться на главном - предпринимательстве'),
-        OnBoardWidget(
-          onboardingImage: "125.svg",
-          isActive: 3,
-          text: 'Сделано ботаниками для ботаников',
-          heightSizeBox: 60,
-        ),
-      ],
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: PageView(
+        controller: controller,
+        children: [
+          OnBoardWidget(
+            onboardingImage: "210.svg",
+            isActive: 1,
+            text: 'Фонд поддержки стартапов "Спутник"',
+          ),
+          OnBoardWidget(
+              onboardingImage: "39.svg",
+              isActive: 2,
+              text:
+                  'Мы помогаем сфокусироваться на главном - предпринимательстве'),
+          OnBoardWidget(
+            onboardingImage: "125.svg",
+            isActive: 3,
+            text: 'Сделано ботаниками для ботаников',
+            heightSizeBox: 60,
+          ),
+        ],
+      ),
     );
   }
 }

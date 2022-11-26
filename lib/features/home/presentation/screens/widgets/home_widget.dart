@@ -1,23 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+
 import 'package:application_social/core/service/api_service/api_service.dart';
 import 'package:application_social/core/service/models/following_model.dart';
 import 'package:application_social/core/service/models/repositories_model.dart';
 import 'package:application_social/core/service/models/user_model.dart';
 import 'package:application_social/features/home/presentation/screens/widgets/category_name.dart';
-import 'package:flutter/material.dart';
-
-
-
-String nameLogin = 'GantMan';
-
-
-
 
 const TextStyle mainWord = TextStyle(fontSize: 30, fontWeight: FontWeight.w700);
 const TextStyle greyWord = TextStyle(color: Colors.black38, fontSize: 12);
 const Color colorWordGrey = Colors.black38;
 
+// ignore: must_be_immutable
 class HomeWidget extends StatefulWidget {
-  const HomeWidget({super.key});
+  String nameLogin;
+  HomeWidget({
+    Key? key,
+    required this.nameLogin,
+  }) : super(key: key);
 
   @override
   State<HomeWidget> createState() => _HomeWidgetState();
@@ -60,14 +60,15 @@ class _HomeWidgetState extends State<HomeWidget> {
   }
 
   getUser() async {
-    User user = await APIService().getUser(nameLogin);
+    User user = await APIService().getUser(widget.nameLogin);
     setState(() {
       _user = user;
     });
   }
 
   getFollowing() async {
-    List<Following> following = await APIService().getFollowingUser(nameLogin);
+    List<Following> following =
+        await APIService().getFollowingUser(widget.nameLogin);
     setState(() {
       _following = following;
     });
@@ -75,7 +76,7 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   getRepositories() async {
     List<Repositories> repositories =
-        await APIService().getRepositoriesUser(nameLogin);
+        await APIService().getRepositoriesUser(widget.nameLogin);
     setState(() {
       _repositories = repositories;
       login = true;

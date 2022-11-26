@@ -19,6 +19,10 @@ class APIService {
     }
   }
 
+
+
+  
+
   Future<List<Following>> getFollowingUser(String nameLogin) async {
     Uri uri = Uri.parse('https://api.github.com/users/$nameLogin/following');
     final response = await http.get(uri);
@@ -57,7 +61,7 @@ class APIService {
     }
   }
 
-Future<List<Followers>> getFollowerUser(String nameLogin) async {
+  Future<List<Followers>> getFollowerUser(String nameLogin) async {
     Uri uri = Uri.parse('https://api.github.com/users/$nameLogin/followers');
     final response = await http.get(uri);
     List<Followers> followers = [];
@@ -75,8 +79,4 @@ Future<List<Followers>> getFollowerUser(String nameLogin) async {
       throw error.toString();
     }
   }
-
-
-
 }
-
