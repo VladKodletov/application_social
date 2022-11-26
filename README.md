@@ -1,24 +1,4 @@
-# Социальная сеть. 
-
-## Данные получает посредством сетевой архитектуры REST API. 
-## Onboarding в виде одного экрана c 3 страницами с переключениями как свайпом так и по кнопке. 
-## Проверка никнейма пользователя на валидность при входе.
-## Недоступность кнопки входа, пока поле ввода пустое. 
-## Подключение с помощью библиотеки адаптивных SVG изображений.
-## Pull-to-refresh для обновления списка followers.
-
-
-
-### TODO list:
-### Icons in BottomNavBar
-### Localizations language
-### Custom smiles in profile
-### Correcting UI repositories
-
-
-
-
-<h1 align="center">Социальная сеть.</h1>
+<h1 align="center">Социальная GH сеть.</h1>
 <h2 align="center">
 
 ## Дизайн приложения разработано по данному в Figma макету.
@@ -41,4 +21,8 @@
 ![20221126_230730](https://user-images.githubusercontent.com/108389045/204101262-87fea1b8-b4bd-4ac2-bcc4-9a641178d7fd.gif)
 
 
-
+### TODO list:
+### Icons in BottomNavBar
+### Localizations language
+### Custom smiles in profile
+### Correcting UI repositories
