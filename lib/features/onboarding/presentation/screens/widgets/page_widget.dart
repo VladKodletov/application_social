@@ -1,10 +1,10 @@
-import 'package:application_social/features/auth/presentation/auth.dart';
-import 'package:application_social/features/onboarding/presentation/screens/onboard.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:application_social/features/onboarding/presentation/screens/widgets/page_number.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:application_social/features/auth/presentation/auth.dart';
+import 'package:application_social/features/onboarding/presentation/screens/widgets/page_number.dart';
 
 // ignore: must_be_immutable
 class OnBoardWidget extends StatelessWidget {
@@ -12,6 +12,7 @@ class OnBoardWidget extends StatelessWidget {
   final int isActive;
   final String text;
   double heightSizeBox;
+  final PageController controller;
 
   OnBoardWidget({
     Key? key,
@@ -19,6 +20,7 @@ class OnBoardWidget extends StatelessWidget {
     required this.isActive,
     required this.text,
     this.heightSizeBox = 6,
+    required this.controller,
   }) : super(key: key);
 
   @override

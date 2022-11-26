@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:application_social/const/const.dart';
 import 'package:flutter/material.dart';
 
 import 'package:application_social/core/service/api_service/api_service.dart';
@@ -7,9 +8,7 @@ import 'package:application_social/core/service/models/repositories_model.dart';
 import 'package:application_social/core/service/models/user_model.dart';
 import 'package:application_social/features/home/presentation/screens/widgets/category_name.dart';
 
-const TextStyle mainWord = TextStyle(fontSize: 30, fontWeight: FontWeight.w700);
-const TextStyle greyWord = TextStyle(color: Colors.black38, fontSize: 12);
-const Color colorWordGrey = Colors.black38;
+
 
 // ignore: must_be_immutable
 class HomeWidget extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:application_social/features/home/presentation/screens/widgets/home_widget.dart';
+import 'package:application_social/const/const.dart';
 import 'package:flutter/material.dart';
 
 class CategoryName extends StatelessWidget {

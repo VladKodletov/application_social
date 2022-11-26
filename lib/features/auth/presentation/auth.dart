@@ -113,6 +113,7 @@ class _AuthState extends State<Auth> {
                           final response = await http.get(uri);
 
                           Map<String, dynamic> data = jsonDecode(response.body);
+                          // ignore: unused_local_variable
                           User user = User.fromMap(data);
 
                           // ignore: use_build_context_synchronously

@@ -1,11 +1,6 @@
 import 'package:application_social/features/onboarding/presentation/screens/widgets/page_widget.dart';
 import 'package:flutter/material.dart';
 
-final controller = PageController(
-  initialPage: 0,
-  keepPage: true,
-);
-
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({super.key});
 
@@ -14,6 +9,10 @@ class OnBoardScreen extends StatefulWidget {
 }
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
+  final controller = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,16 +21,19 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
         controller: controller,
         children: [
           OnBoardWidget(
+            controller: controller,
             onboardingImage: "210.svg",
             isActive: 1,
             text: 'Фонд поддержки стартапов "Спутник"',
           ),
           OnBoardWidget(
+              controller: controller,
               onboardingImage: "39.svg",
               isActive: 2,
               text:
                   'Мы помогаем сфокусироваться на главном - предпринимательстве'),
           OnBoardWidget(
+            controller: controller,
             onboardingImage: "125.svg",
             isActive: 3,
             text: 'Сделано ботаниками для ботаников',
