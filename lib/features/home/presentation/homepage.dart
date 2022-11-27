@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:application_social/features/followers/presentation/Followers.dart';
-import 'package:application_social/features/home/presentation/screens/widgets/home_widget.dart';
+import 'package:application_social/features/home/presentation/widgets/home_widget.dart';
 import 'package:application_social/features/profile/presentation/profile_screen.dart';
 
 class HomePage extends StatefulWidget {

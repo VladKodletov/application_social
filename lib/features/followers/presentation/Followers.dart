@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: file_names
 
-import 'package:application_social/const/const.dart';
+import 'package:application_social/core/const/const.dart';
 import 'package:flutter/material.dart';
 
 import 'package:application_social/core/service/api_service/api_service.dart';

@@ -1,5 +1,5 @@
 import 'package:application_social/features/auth/presentation/auth.dart';
-import 'package:application_social/features/onboarding/presentation/screens/onboard.dart';
+import 'package:application_social/features/onboarding/presentation/onboard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

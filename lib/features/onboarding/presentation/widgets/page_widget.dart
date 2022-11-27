@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:application_social/features/auth/presentation/auth.dart';
-import 'package:application_social/features/onboarding/presentation/screens/widgets/page_number.dart';
+import 'package:application_social/features/onboarding/presentation/widgets/page_number.dart';
 
 // ignore: must_be_immutable
 class OnBoardWidget extends StatelessWidget {

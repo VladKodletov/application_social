@@ -1,4 +1,4 @@
-import 'package:application_social/features/onboarding/presentation/screens/widgets/page_widget.dart';
+import 'package:application_social/features/onboarding/presentation/widgets/page_widget.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardScreen extends StatefulWidget {

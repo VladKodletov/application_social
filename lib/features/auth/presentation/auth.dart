@@ -1,5 +1,5 @@
 import 'package:application_social/core/service/models/user_model.dart';
-import 'package:application_social/features/home/presentation/screens/homepage.dart';
+import 'package:application_social/features/home/presentation/homepage.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

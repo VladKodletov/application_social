@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:application_social/const/const.dart';
+import 'package:application_social/core/const/const.dart';
 import 'package:flutter/material.dart';
 
 import 'package:application_social/core/service/api_service/api_service.dart';
 import 'package:application_social/core/service/models/following_model.dart';
 import 'package:application_social/core/service/models/repositories_model.dart';
 import 'package:application_social/core/service/models/user_model.dart';
-import 'package:application_social/features/home/presentation/screens/widgets/category_name.dart';
+import 'package:application_social/features/home/presentation/widgets/category_name.dart';
 
 
 
