@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: file_names
 
 import 'package:application_social/core/const/const.dart';
@@ -31,7 +30,8 @@ class _FollowersScreenState extends State<FollowersScreen> {
   }
 
   Future getFollowers() async {
-    List<Followers> followers = await APIService().getFollowerUser(widget.nameLogin);
+    List<Followers> followers =
+        await APIService().getFollowerUser(widget.nameLogin);
     setState(() {
       _followers = followers;
       login = true;
@@ -39,7 +39,8 @@ class _FollowersScreenState extends State<FollowersScreen> {
   }
 
   Future refresh() async {
-    List<Followers> followers = await APIService().getFollowerUser(widget.nameLogin);
+    List<Followers> followers =
+        await APIService().getFollowerUser(widget.nameLogin);
     setState(() {
       _followers = followers;
     });

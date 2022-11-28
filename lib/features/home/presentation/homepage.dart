@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'package:application_social/features/followers/presentation/Followers.dart';
@@ -18,13 +17,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late int indexNavigation = 0;
-    late List pages = [
-      HomeWidget(nameLogin: widget.userName),
-      FollowersScreen(nameLogin: widget.userName),
-      FollowersScreen(nameLogin: widget.userName),
-      ProfileScreen(nameLogin: widget.userName),
-    ];
-
+  late List pages = [
+    HomeWidget(nameLogin: widget.userName),
+    FollowersScreen(nameLogin: widget.userName),
+    FollowersScreen(nameLogin: widget.userName),
+    ProfileScreen(nameLogin: widget.userName),
+  ];
 
   // final pages = [
   //   Center(),
@@ -44,8 +42,6 @@ class _HomePageState extends State<HomePage> {
   //     ProfileScreen(nameLogin: widget.userName),
   //   ];
   // }
-
-
 
   @override
   Widget build(BuildContext context) {
