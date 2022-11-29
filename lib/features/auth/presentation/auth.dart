@@ -1,8 +1,9 @@
 import 'package:application_social/core/service/models/user_model.dart';
+import 'package:application_social/features/auth/presentation/widgets/error_message.dart';
+import 'package:application_social/features/auth/presentation/widgets/login_textfield.dart';
 import 'package:application_social/features/home/presentation/homepage.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -62,46 +63,13 @@ class _AuthState extends State<Auth> {
               const SizedBox(
                 height: 40,
               ),
-              TextField(
-                controller: myController,
-                style: const TextStyle(fontSize: 30),
-                decoration: const InputDecoration(
-                  floatingLabelBehavior: FloatingLabelBehavior.never,
-                  isDense: true,
-                  contentPadding: EdgeInsets.all(25),
-                  filled: true,
-                  fillColor: Color.fromRGBO(240, 240, 240, 1),
-                  labelText: 'Nickname',
-                  labelStyle: TextStyle(fontSize: 24, color: Colors.grey),
-                  hintText: 'Enter nickname',
-                  hintStyle: TextStyle(fontSize: 24),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(Radius.circular(12))),
-                ),
-              ),
-              if (!isKeyboard) showError == false
-                  ? const SizedBox(
-                      height: 350,
-                    )
-                  : SizedBox(
-                      height: 350,
-                      child: Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset('assets/images/icon1.svg',
-                                fit: BoxFit.contain),
-                            const Text(
-                              "User with this nickname not found!",
-                              style: TextStyle(fontSize: 30, color: Colors.red),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+              LoginTextField(myController: myController),
+              if (!isKeyboard)
+                showError == false
+                    ? const SizedBox(
+                        height: 350,
+                      )
+                    : const ErrorMessage(),
               ElevatedButton(
                 onPressed: myController.text.isEmpty
                     ? null

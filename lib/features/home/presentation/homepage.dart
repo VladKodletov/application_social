@@ -24,25 +24,6 @@ class _HomePageState extends State<HomePage> {
     ProfileScreen(nameLogin: widget.userName),
   ];
 
-  // final pages = [
-  //   Center(),
-  //   Center(),
-  //   Center(),
-  //   Center(),
-  // ];
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   int indexNavigation = 0;
-  //   final pages = [
-  //     HomeWidget(nameLogin: widget.userName),
-  //     FollowersScreen(nameLogin: widget.userName),
-  //     FollowersScreen(nameLogin: widget.userName),
-  //     ProfileScreen(nameLogin: widget.userName),
-  //   ];
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

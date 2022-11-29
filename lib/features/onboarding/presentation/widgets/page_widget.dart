@@ -10,10 +10,10 @@ class OnBoardWidget extends StatelessWidget {
   final String onboardingImage;
   final int isActive;
   final String text;
-  double heightSizeBox;
+  final double heightSizeBox;
   final PageController controller;
 
-  OnBoardWidget({
+  const OnBoardWidget({
     Key? key,
     required this.onboardingImage,
     required this.isActive,
@@ -44,7 +44,6 @@ class OnBoardWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SvgPicture.asset('assets/images/$onboardingImage',
-                    // fit: BoxFit.cover,
                     fit: BoxFit.contain),
                 SizedBox(
                   height: heightSizeBox,
@@ -64,7 +63,6 @@ class OnBoardWidget extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  // mainAxisSize: MainAxisSize.min,
                   children: [
                     PageNumber(
                       colorText: isActive == 1 ? Colors.black : Colors.white,
@@ -110,8 +108,6 @@ class OnBoardWidget extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      // textStyle: const TextStyle(
-                      //     fontSize: 18, fontWeight: FontWeight.w500),
                       minimumSize: const Size(double.infinity, 60)),
                   child: const Text(
                     'Next',
