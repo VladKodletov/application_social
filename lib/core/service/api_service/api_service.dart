@@ -19,10 +19,6 @@ class APIService {
     }
   }
 
-
-
-  
-
   Future<List<Following>> getFollowingUser(String nameLogin) async {
     Uri uri = Uri.parse('https://api.github.com/users/$nameLogin/following');
     final response = await http.get(uri);

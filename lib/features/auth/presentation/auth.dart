@@ -5,6 +5,7 @@ import 'package:application_social/features/home/presentation/homepage.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'dart:convert';
 
 class Auth extends StatefulWidget {
@@ -15,22 +16,22 @@ class Auth extends StatefulWidget {
 }
 
 class _AuthState extends State<Auth> {
-  final myController = TextEditingController();
+  // final myController = TextEditingController();
 
   bool showError = false;
   String nameLogin = '';
 
-  @override
-  void initState() {
-    myController.addListener(_buttonState);
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   myController.addListener(_buttonState);
+  //   super.initState();
+  // }
 
-  _buttonState() {
-    setState(() {
-      myController.text;
-    });
-  }
+  // _buttonState() {
+  //   setState(() {
+  //     myController.text;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -42,112 +43,122 @@ class _AuthState extends State<Auth> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const Text('GitHub social',
-                  softWrap: true,
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w900,
-                  )),
-              Text('Enter nickname on github',
-                  softWrap: true,
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                  )),
-              const SizedBox(
-                height: 40,
-              ),
-              LoginTextField(myController: myController),
-              if (!isKeyboard)
-                showError == false
-                    ? const SizedBox(
-                        height: 350,
-                      )
-                    : const ErrorMessage(),
-              ElevatedButton(
-                onPressed: myController.text.isEmpty
-                    ? null
-                    : () async {
-                        try {
-                          nameLogin = myController.text;
-                          Uri uri = Uri.parse(
-                              'https://api.github.com/users/$nameLogin');
-                          final response = await http.get(uri);
-
-                          Map<String, dynamic> data = jsonDecode(response.body);
-                          // ignore: unused_local_variable
-                          User user = User.fromMap(data);
-
-                          // ignore: use_build_context_synchronously
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    HomePage(userName: nameLogin),
-                              ));
-                        } catch (error) {
-                          setState(() {
-                            showError = true;
-                          });
-                        }
-                      },
-                style: ElevatedButton.styleFrom(
-                    disabledBackgroundColor: Colors.grey,
-                    minimumSize: const Size(double.infinity, 60)),
-                child: const Text(
-                  'Search',
+        child: Consumer<Login>(
+          builder: (context, value, child) => Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text('GitHub social',
+                    softWrap: true,
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.w900,
+                    )),
+                Text('Enter nickname on github',
+                    softWrap: true,
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    )),
+                const SizedBox(
+                  height: 40,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Row(
+                LoginTextField(myController: value.myController),
+                if (!isKeyboard)
+                  showError == false
+                      ? const SizedBox(
+                          height: 350,
+                        )
+                      : const ErrorMessage(),
+                ElevatedButton(
+                  onPressed: value.myController.text.isEmpty
+                      ? null
+                      : () async {
+                          try {
+                            nameLogin = value.myController.text;
+                            Uri uri = Uri.parse(
+                                'https://api.github.com/users/$nameLogin');
+                            final response = await http.get(uri);
+
+                            Map<String, dynamic> data =
+                                jsonDecode(response.body);
+                            // ignore: unused_local_variable
+                            User user = User.fromMap(data);
+
+                            // ignore: use_build_context_synchronously
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomePage(userName: nameLogin),
+                                ));
+                          } catch (error) {
+                            setState(() {
+                              showError = true;
+                            });
+                          }
+                        },
+                  style: ElevatedButton.styleFrom(
+                      disabledBackgroundColor: Colors.grey,
+                      minimumSize: const Size(double.infinity, 60)),
+                  child: const Text(
+                    'Search',
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'By signin in, I agree with ',
+                        style: TextStyle(color: Colors.black38),
+                      ),
+                      GestureDetector(
+                        child: const Text(
+                          'Terms of Use',
+                          style:
+                              TextStyle(decoration: TextDecoration.underline),
+                        ),
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'By signin in, I agree with ',
+                      'and ',
                       style: TextStyle(color: Colors.black38),
                     ),
                     GestureDetector(
                       child: const Text(
-                        'Terms of Use',
+                        ' Privacy Policy',
                         style: TextStyle(decoration: TextDecoration.underline),
                       ),
                       onTap: () {},
                     ),
                   ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'and ',
-                    style: TextStyle(color: Colors.black38),
-                  ),
-                  GestureDetector(
-                    child: const Text(
-                      ' Privacy Policy',
-                      style: TextStyle(decoration: TextDecoration.underline),
-                    ),
-                    onTap: () {},
-                  ),
-                ],
-              )
-            ]),
+                )
+              ]),
+        ),
       ),
     );
   }
 }
 
 class Login extends ChangeNotifier {
-  void pressButton() {
-    TextEditingController();
+  TextEditingController myController = TextEditingController();
+  void updateController() {
+    myController = TextEditingController();
     notifyListeners();
   }
+
+//   void pressButton() {
+//     TextEditingController();
+//     notifyListeners();
+//   }
 }
