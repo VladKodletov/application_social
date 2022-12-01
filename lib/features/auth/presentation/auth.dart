@@ -16,25 +16,28 @@ class Auth extends StatefulWidget {
 }
 
 class _AuthState extends State<Auth> {
-  // final myController = TextEditingController();
+  final myController = TextEditingController();
 
   bool showError = false;
   String nameLogin = '';
 
-  // @override
-  // void initState() {
-  //   myController.addListener(_buttonState);
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    myController.addListener(_buttonState);
+    super.initState();
+  }
 
-  // _buttonState() {
-  //   setState(() {
-  //     myController.text;
-  //   });
-  // }
+  _buttonState() {
+    setState(() {
+      myController.text;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    // final myController = context.watch<Login>().loginController;
+    // final myControllerEmpty =
+    //     context.watch<Login>().loginController.text.isEmpty;
     final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       appBar: AppBar(
@@ -65,7 +68,7 @@ class _AuthState extends State<Auth> {
                 const SizedBox(
                   height: 40,
                 ),
-                LoginTextField(myController: value.myController),
+                LoginTextField(myController: myController),
                 if (!isKeyboard)
                   showError == false
                       ? const SizedBox(
@@ -73,11 +76,11 @@ class _AuthState extends State<Auth> {
                         )
                       : const ErrorMessage(),
                 ElevatedButton(
-                  onPressed: value.myController.text.isEmpty
+                  onPressed: myController.text.isEmpty
                       ? null
                       : () async {
                           try {
-                            nameLogin = value.myController.text;
+                            nameLogin = myController.text;
                             Uri uri = Uri.parse(
                                 'https://api.github.com/users/$nameLogin');
                             final response = await http.get(uri);
@@ -151,11 +154,11 @@ class _AuthState extends State<Auth> {
 }
 
 class Login extends ChangeNotifier {
-  TextEditingController myController = TextEditingController();
-  void updateController() {
-    myController = TextEditingController();
-    notifyListeners();
-  }
+  // TextEditingController loginController = TextEditingController();
+  // void updateController() {
+  //   loginController = TextEditingController();
+  //   notifyListeners();
+  // }
 
 //   void pressButton() {
 //     TextEditingController();
