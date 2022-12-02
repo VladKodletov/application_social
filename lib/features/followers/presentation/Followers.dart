@@ -51,17 +51,15 @@ class _FollowersScreenState extends State<FollowersScreen> {
             child: CircularProgressIndicator(),
           )
         : SafeArea(
-            // padding: const EdgeInsets.only(
-            //   top: 60.0,
-            // ),
             child: Stack(
               alignment: AlignmentDirectional.topStart,
               children: [
                 Padding(
-                    padding: const EdgeInsets.only(top: 80),
+                    padding: const EdgeInsets.only(top: 90),
                     child: RefreshIndicator(
                       onRefresh: refresh,
                       child: ListView.builder(
+                        itemCount: _followers.length,
                         itemBuilder: (context, index) {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

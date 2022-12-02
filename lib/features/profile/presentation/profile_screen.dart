@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
-
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
@@ -59,90 +58,92 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ? const Center(
             child: CircularProgressIndicator(),
           )
-        : Container(
-            padding: const EdgeInsets.only(top: 60.0, left: 20, right: 20),
-            color: const Color.fromARGB(240, 246, 246, 250),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CircleAvatar(
-                      radius: 24,
-                      backgroundColor: Colors.black.withOpacity(0.08),
-                      foregroundColor: Colors.black,
-                      child: const Icon(Icons.settings),
-                    ),
-                    CircleAvatar(
-                      radius: 24,
-                      backgroundColor: Colors.black.withOpacity(0.08),
-                      foregroundColor: Colors.black,
-                      child: const Icon(Icons.notifications),
-                    )
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 100,
-                      backgroundImage: NetworkImage(_user.avatarUrl),
-                    ),
-                    Text(
-                      _user.login,
-                      style: const TextStyle(
-                          fontSize: 35, fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      _user.id.toString(),
-                      style:
-                          const TextStyle(color: Colors.black38, fontSize: 20),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const ProfileButton(
-                  colorIcon: Colors.red,
-                  iconPrefix: Icons.favorite,
-                  nameButton: "My following",
-                ),
-                const ProfileButton(
-                  colorIcon: Colors.red,
-                  iconPrefix: Icons.favorite,
-                  nameButton: "My followers",
-                ),
-                const ProfileButton(
-                  colorIcon: Colors.yellow,
-                  iconPrefix: Icons.star,
-                  nameButton: "My badges",
-                ),
-                const ProfileButton(
-                  colorIcon: Colors.green,
-                  iconPrefix: Icons.money_rounded,
-                  nameButton: "My organizations",
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.black,
-                      // textStyle: const TextStyle(
-                      //     fontSize: 18, fontWeight: FontWeight.w500),
-                      minimumSize: const Size(double.infinity, 60)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'View all ',
+        : SafeArea(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              color: const Color.fromARGB(240, 246, 246, 250),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircleAvatar(
+                        radius: 24,
+                        backgroundColor: Colors.black.withOpacity(0.08),
+                        foregroundColor: Colors.black,
+                        child: const Icon(Icons.settings),
                       ),
-                      Icon(Icons.arrow_right_alt_outlined)
+                      CircleAvatar(
+                        radius: 24,
+                        backgroundColor: Colors.black.withOpacity(0.08),
+                        foregroundColor: Colors.black,
+                        child: const Icon(Icons.notifications),
+                      )
                     ],
                   ),
-                ),
-              ],
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 100,
+                        backgroundImage: NetworkImage(_user.avatarUrl),
+                      ),
+                      Text(
+                        _user.login,
+                        style: const TextStyle(
+                            fontSize: 35, fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        _user.id.toString(),
+                        style: const TextStyle(
+                            color: Colors.black38, fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const ProfileButton(
+                    colorIcon: Colors.red,
+                    iconPrefix: Icons.favorite,
+                    nameButton: "My following",
+                  ),
+                  const ProfileButton(
+                    colorIcon: Colors.red,
+                    iconPrefix: Icons.favorite,
+                    nameButton: "My followers",
+                  ),
+                  const ProfileButton(
+                    colorIcon: Colors.yellow,
+                    iconPrefix: Icons.star,
+                    nameButton: "My badges",
+                  ),
+                  const ProfileButton(
+                    colorIcon: Colors.green,
+                    iconPrefix: Icons.money_rounded,
+                    nameButton: "My organizations",
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.black,
+                        // textStyle: const TextStyle(
+                        //     fontSize: 18, fontWeight: FontWeight.w500),
+                        minimumSize: const Size(double.infinity, 60)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'View all ',
+                        ),
+                        Icon(Icons.arrow_right_alt_outlined)
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
   }
