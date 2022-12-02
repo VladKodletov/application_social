@@ -5,23 +5,20 @@ import 'package:application_social/features/home/presentation/widgets/home_widge
 import 'package:application_social/features/profile/presentation/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
-  final String userName;
-  const HomePage({
-    Key? key,
-    required this.userName,
-  }) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  
   late int indexNavigation = 0;
   late List pages = [
-    HomeWidget(nameLogin: widget.userName),
-    FollowersScreen(nameLogin: widget.userName),
-    FollowersScreen(nameLogin: widget.userName),
-    ProfileScreen(nameLogin: widget.userName),
+    const HomeWidget(),
+    const FollowersScreen(),
+    const FollowersScreen(),
+    const ProfileScreen(),
   ];
 
   @override

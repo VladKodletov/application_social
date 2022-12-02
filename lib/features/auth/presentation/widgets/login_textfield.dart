@@ -1,17 +1,16 @@
+import 'package:application_social/core/provider/login_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginTextField extends StatelessWidget {
-  const LoginTextField({
-    Key? key,
-    required this.myController,
-  }) : super(key: key);
-
-  final TextEditingController myController;
+  const LoginTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: myController,
+      
+      onChanged: (value) => context.read<Login>().changeLogin(value),
+      // controller: myController,
       style: const TextStyle(fontSize: 30),
       decoration: const InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.never,

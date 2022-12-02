@@ -1,17 +1,15 @@
 // ignore_for_file: file_names
 
 import 'package:application_social/core/const/const.dart';
+import 'package:application_social/core/provider/login_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:application_social/core/service/api_service/api_service.dart';
 import 'package:application_social/core/service/models/followers_model.dart';
+import 'package:provider/provider.dart';
 
 class FollowersScreen extends StatefulWidget {
-  final String nameLogin;
-  const FollowersScreen({
-    Key? key,
-    required this.nameLogin,
-  }) : super(key: key);
+  const FollowersScreen({super.key});
 
   @override
   State<FollowersScreen> createState() => _FollowersScreenState();
@@ -31,7 +29,7 @@ class _FollowersScreenState extends State<FollowersScreen> {
 
   Future getFollowers() async {
     List<Followers> followers =
-        await APIService().getFollowerUser(widget.nameLogin);
+        await APIService().getFollowerUser(context.read<Login>().getLogin);
     setState(() {
       _followers = followers;
       login = true;
@@ -40,7 +38,7 @@ class _FollowersScreenState extends State<FollowersScreen> {
 
   Future refresh() async {
     List<Followers> followers =
-        await APIService().getFollowerUser(widget.nameLogin);
+        await APIService().getFollowerUser(context.read<Login>().getLogin);
     setState(() {
       _followers = followers;
     });
@@ -52,15 +50,15 @@ class _FollowersScreenState extends State<FollowersScreen> {
         ? const Center(
             child: CircularProgressIndicator(),
           )
-        : Padding(
-            padding: const EdgeInsets.only(
-              top: 60.0,
-            ),
+        : SafeArea(
+            // padding: const EdgeInsets.only(
+            //   top: 60.0,
+            // ),
             child: Stack(
               alignment: AlignmentDirectional.topStart,
               children: [
                 Padding(
-                    padding: const EdgeInsets.only(top: 50),
+                    padding: const EdgeInsets.only(top: 80),
                     child: RefreshIndicator(
                       onRefresh: refresh,
                       child: ListView.builder(
@@ -68,7 +66,6 @@ class _FollowersScreenState extends State<FollowersScreen> {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Divider(thickness: 1.5),
                               ListTile(
                                 leading: CircleAvatar(
                                   radius: 30,
@@ -86,6 +83,7 @@ class _FollowersScreenState extends State<FollowersScreen> {
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16)),
                               ),
+                              const Divider(thickness: 1.5),
                             ],
                           );
                         },

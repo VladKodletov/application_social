@@ -1,15 +1,14 @@
+import 'package:application_social/core/provider/login_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:application_social/core/service/api_service/api_service.dart';
 import 'package:application_social/core/service/models/user_model.dart';
 import 'package:application_social/features/profile/presentation/widgets/profile_button.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
-  final String nameLogin;
-  const ProfileScreen({
-    Key? key,
-    required this.nameLogin,
-  }) : super(key: key);
+  const ProfileScreen({super.key});
+
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -47,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   getUserProfile() async {
-    User user = await APIService().getUser(widget.nameLogin);
+    User user = await APIService().getUser(context.read<Login>().getLogin);
     setState(() {
       _user = user;
       login = true;
