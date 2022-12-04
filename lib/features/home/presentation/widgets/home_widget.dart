@@ -124,7 +124,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                   ),
                   const CategoryName(category: 'Following you'),
                   SizedBox(
-                    // width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.25,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,

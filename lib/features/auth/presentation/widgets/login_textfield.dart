@@ -8,9 +8,7 @@ class LoginTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      
       onChanged: (value) => context.read<Login>().changeLogin(value),
-      // controller: myController,
       style: const TextStyle(fontSize: 30),
       decoration: const InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.never,
